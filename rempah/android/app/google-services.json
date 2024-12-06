@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "568807938210",
+    "project_id": "rempah-8eb72",
+    "storage_bucket": "rempah-8eb72.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568807938210:android:26f252aa65c9f3273e5ffb",
+        "android_client_info": {
+          "package_name": "com.example.rempah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK_ia9--__L7udEhRxulmEnF72Rr-WS8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
