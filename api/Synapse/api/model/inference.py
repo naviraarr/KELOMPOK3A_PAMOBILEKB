@@ -69,13 +69,6 @@ class Model:
         Tidak ada batasan dalam preprocessing, sesuaikan dengan kebutuhan model. 
         Yang terdapat pada contoh ini adalah preprocessing untuk model MNIST.
         '''
-        # image = Image.open(image_file).convert('L')
-        # image = image.resize((224, 224))
-        # image_array = np.array(image) / 255.0
-        # Load and preprocess the uploaded image
-        # img = image.load_img(image, target_size=(224, 224))
-        # img_array = image.img_to_array(img)
-        # img_array = np.expand_dims(img_array, axis=0) / 255.0  # Rescale to [0, 1]
         image = Image.open(image_file).convert('RGB')
         img = image.resize((224, 224))
         img_array = keras_image.img_to_array(img) / 255.0  # Normalisasi ke rentang [0, 1]
@@ -95,30 +88,6 @@ class Model:
 
         return predicted_class_name, confidence
 
-        # if image_array.ndim == 2: 
-        #     # Menurunkan dimensi array menjadi 1D
-        #     image_array = image_array.reshape(-1, 784)
-        #     # Menaikkan dimensi array menjadi 3D
-        #     # image_array = np.expand_dims(image_array, axis=0)
-
-        # if self.model_type == 'keras':
-        #     prediction = self.model.predict(image_array)
-        #     prediction = np.argmax(prediction, axis=1)
-        #     return prediction.tolist()
-
-        # elif self.model_type == 'tflite':
-        #     input_details = self.model.get_input_details()
-        #     output_details = self.model.get_output_details()
-            
-        #     image_array = image_array.astype(input_details[0]['dtype'])
-        #     self.model.set_tensor(input_details[0]['index'], image_array)
-        #     self.model.invoke()
-        #     prediction = self.model.get_tensor(output_details[0]['index'])
-        #     return prediction.tolist()
-        
-        # else:
-        #     raise ValueError("This method is only supported for Keras and TensorFlow Lite models.")
-
     def predict_from_data(self, data, numerical_features=None):
         '''
         Method ini digunakan untuk memprediksi data tabular yang diberikan. Contoh yang digunakan dalam method ini adalah
@@ -129,10 +98,7 @@ class Model:
                 data = pd.DataFrame([data])
 
             elif not isinstance(data, pd.DataFrame):
-                raise ValueError("Data format not supported for sklearn model. Use list, NumPy array, or DataFrame.")
-            
-            # Pipeline digunakan jika pada saat model training data telah melalui preprocessing
-            # pipeline = self.data_pipeline(numerical_features=numerical_features) 
+                raise ValueError("Data format not supported for sklearn model. Use list, NumPy array, or DataFrame.") 
 
             # Hasil prediksi berbentuk angka
             prediction = self.model.predict(data)
